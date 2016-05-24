@@ -62,14 +62,12 @@ import okhttp3.internal.tls.OkHostnameVerifier;
  * }</pre>
  */
 public class OkHttpClient implements Cloneable, Call.Factory {
-  private static final List<Protocol> DEFAULT_PROTOCOLS = Util.immutableList(
-      Protocol.HTTP_2, Protocol.SPDY_3, Protocol.HTTP_1_1);
+  private static final List<Protocol> DEFAULT_PROTOCOLS = Util.immutableList(Protocol.HTTP_2, Protocol.SPDY_3, Protocol.HTTP_1_1);
 
   private static final List<ConnectionSpec> DEFAULT_CONNECTION_SPECS;
 
   static {
-    List<ConnectionSpec> connSpecs = new ArrayList<>(Arrays.asList(ConnectionSpec.MODERN_TLS,
-        ConnectionSpec.COMPATIBLE_TLS));
+    List<ConnectionSpec> connSpecs = new ArrayList<>(Arrays.asList(ConnectionSpec.MODERN_TLS,ConnectionSpec.COMPATIBLE_TLS));
     if (Platform.get().isCleartextTrafficPermitted()) {
       connSpecs.add(ConnectionSpec.CLEARTEXT);
     }
@@ -92,8 +90,7 @@ public class OkHttpClient implements Cloneable, Call.Factory {
         return client.internalCache();
       }
 
-      @Override public boolean connectionBecameIdle(
-          ConnectionPool pool, RealConnection connection) {
+      @Override public boolean connectionBecameIdle(ConnectionPool pool, RealConnection connection) {
         return pool.connectionBecameIdle(connection);
       }
 
